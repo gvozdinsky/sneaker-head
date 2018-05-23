@@ -1,0 +1,12 @@
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-xxl: 1440px;
+
+//mobile first mixin
+@mixin breakpoint-up($size) {
+  @media screen and (min-width: $size) {
+    @content
+  }
+}
