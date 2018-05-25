@@ -1,4 +1,4 @@
-import { observable, action, computed, extendObservable } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import api from 'api';
 
 export class Product {

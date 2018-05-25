@@ -11,9 +11,23 @@ const UserSchema = new mongoose.Schema({
     trim: true,
     match: [/^[a-zA-Z0-9]+$/, "Email is invalid"]
   },
-  password: String
+  password: String,
+  cart: [{
+    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    amount: {
+      type: Number,
+      min: 1,
+      max: 10
+    },
+    size: {
+      type: Number,
+      min: 34,
+      max: 50
+    }
+  }]
 }, {
-    timestamps: true
+    timestamps: true,
+    minimize: false
   })
 
 UserSchema.plugin(passportLocalMongoose);
@@ -21,7 +35,25 @@ UserSchema.plugin(passportLocalMongoose);
 //return safe user data, without hast, salt, etc
 UserSchema.methods.toAuthJSON = function () {
   return {
-    username: this.username
+    user: {
+      username: this.username,
+    },
+    cart: this.cart
+  }
+
+}
+
+UserSchema.methods.addToCart = async function (cartItem) {
+  cartItem.product = mongoose.Types.ObjectId(cartItem.product);
+  try {
+    this.cart.push(cartItem);
+    const result = await this.save();
+    const new_item = await this.model('User').findById(this.id)
+      .populate('cart.product', 'name images price')
+      .select({ "cart": { "$slice": -1 } });
+    return new_item.cart;
+  } catch (e) {
+    console.log('err\n\n\n\n', e)
   }
 
 }

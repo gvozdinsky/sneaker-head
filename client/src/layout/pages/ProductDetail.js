@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import NumberInput from 'layout/components/NumberInput';
 
-@inject("products")
+@inject("products", "user")
 @observer
 class ProductDetail extends Component {
   renderSizes = () => {
@@ -21,7 +22,14 @@ class ProductDetail extends Component {
     )
   }
 
-
+  addToCart = () => {
+    const { id } = this.props.products.productDetails;
+    this.props.user.addToCart({
+      product: id,
+      amount: 1,
+      size: 46
+    });
+  }
 
   componentDidMount() {
     this.props.products.getOne(this.props.match.params.id);
@@ -51,10 +59,10 @@ class ProductDetail extends Component {
                 </div>
                 <div className="field">
                   <label htmlFor="quantity">Amount:</label>
-                  <input type="number" className="quantity" min="1" value="1" />
+                  <NumberInput minValue={1} maxValue={10} />
                 </div>
               </div>
-              <button className="add-button">
+              <button className="add-button" onClick={this.addToCart}>
                 Add to bag
               </button>
             </div>

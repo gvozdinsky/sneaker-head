@@ -36,6 +36,9 @@ const api = {
   user: {
     getCurrent: () => {
       return api_axios.get(`/users`);
+    },
+    addToCart: (cartItem) => {
+      return api_axios.post('/cart', cartItem);
     }
   }
 

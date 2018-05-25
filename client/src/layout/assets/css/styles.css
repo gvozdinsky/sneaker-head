@@ -695,7 +695,7 @@ a {
   width: 150px;
   height: 32px;
   padding: 5px 10px;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 1px solid #b9b9b9;
 }
 
@@ -704,7 +704,7 @@ a {
   width: 100px;
   height: 32px;
   padding: 5px 10px;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 1px solid #b9b9b9;
 }
 
@@ -726,10 +726,12 @@ a {
   word-spacing: 3px;
   padding: 10px 20px;
   border-radius: 1px;
+  transition: all 0.3s;
 }
 
 #shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag .add-button:hover {
   cursor: pointer;
+  background-color: #e47730;
 }
 
 .fade-animation-enter {
@@ -748,5 +750,36 @@ a {
 .fade-animation-leave-active.fade-animation-leave {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+}
+
+.number-input {
+  display: flex;
+}
+
+.number-input > .number-input-btn {
+  background-color: #222222;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 5px 15px;
+  transition: all 0.3s;
+}
+
+.number-input > .number-input-btn.plus::before {
+  content: "+";
+}
+
+.number-input > .number-input-btn.minus::before {
+  content: "-";
+}
+
+.number-input > .number-input-btn:hover {
+  cursor: pointer;
+  background-color: #353535;
+}
+
+.number-input > .number-input-input {
+  width: 50px;
+  text-align: center;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -2,42 +2,15 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { inject, observer } from 'mobx-react';
 
-@inject("auth")
+@inject("user")
 @observer
 class Header extends Component {
   componentDidMount() {
-    this.props.auth.getUser();
+    this.props.user.getUser();
   }
-  renderMenu = () => {
-    const items = [
-      {
-        text: "Men",
-        link: ""
-      },
-      {
-        text: "Woman",
-        link: ""
-      },
-      {
-        text: "Brands",
-        link: "/brands"
-      }
-    ];
 
-    return (
-      <div className="menu">
-        {
-          items.map(item => {
-            return <div className="item"><Link to={item.link}>{item.text}</Link></div>
-          })
-        }
-      </div>
-    )
-
-  }
   render() {
-    const { user } = this.props.auth;
-    console.log('user', user)
+    const userStore = this.props.user;
     return (
       <header className="header">
         <div className="wrapper">
@@ -48,22 +21,32 @@ class Header extends Component {
               </Link>
 
             </div>
-            {/* {this.renderMenu()} */}
           </div>
 
           <div className="controls">
-            <div className="controls-item">
-              <Link to="/login" className="logout">login</Link>
-            </div>
-            <div className="controls-item">
-              <Link to="/register" className="logout">register</Link>
-            </div>
-            <div className="controls-item user">
-              Hi, {`${user ? user.username : 'Guest'}`} ( <Link to="/logout" className="logout">logout</Link> )
-            </div>
-            <div className="controls-item basket">
-              Basket ( <span className="count">0</span> )
-            </div>
+            {
+              userStore.isAuthenticated
+                ?
+                <React.Fragment>
+                  <div className="controls-item user">
+                    {`${userStore.user.username}`} ( <Link to="/logout" className="logout">logout</Link> )
+                      </div>
+                  <div className="controls-item basket">
+                    Bag ( <span className="count">{userStore.cart.length}</span> )
+                      </div>
+                </React.Fragment>
+                :
+                <React.Fragment>
+                  <div className="controls-item">
+                    <Link to="/login" className="logout">login</Link>
+                  </div>
+                  <div className="controls-item">
+                    <Link to="/register" className="logout">register</Link>
+                  </div>
+                </React.Fragment>
+            }
+
+
             <div className="controls-item search">
               <button className="search-button"></button>
             </div>

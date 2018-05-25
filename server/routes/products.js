@@ -16,10 +16,8 @@ router.get('/', asyncHandler(async function (req, res, next) {
 }));
 
 router.get('/:id', asyncHandler(async function (req, res, next) {
-  console.log('im here')
   const { id } = req.params;
   const product = await Product.getDetail(id);
-  console.log('prod', product);
   res.send(product)
 
 }));

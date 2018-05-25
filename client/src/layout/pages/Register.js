@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
-@inject("auth")
+@inject("user")
 @observer
 class Register extends Component {
 
@@ -12,7 +12,7 @@ class Register extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.auth.register(this.state);
+    this.props.user.register(this.state);
     console.log('eee', this.state)
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
-@inject("auth")
+@inject("user")
 @observer
 class Login extends Component {
 
@@ -12,7 +12,7 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.auth.login(this.state);
+    this.props.user.login(this.state);
   }
 
   handleInputChange = (event) => {

@@ -1,7 +1,9 @@
 $black: #222222;
+$black-hover: #353535;
 $white: #ffffff;
 $light-black: #303030;
 $accent: #f68236;
+$accent-hover: #e47730;
 $gray: #606060;
 $light-gray: #e5e5e5;
 
@@ -333,7 +335,7 @@ $light-gray: #e5e5e5;
                     width: 150px;
                     height: 32px;
                     padding: 5px 10px;
-                    border-radius: 3px;
+                    border-radius: 2px;
                     border: 1px solid #b9b9b9;
                   }
 
@@ -342,7 +344,7 @@ $light-gray: #e5e5e5;
                     width: 100px;
                     height: 32px;
                     padding: 5px 10px;
-                    border-radius: 3px;
+                    border-radius: 2px;
                     border: 1px solid #b9b9b9;
                   }
 
@@ -365,9 +367,11 @@ $light-gray: #e5e5e5;
                 word-spacing: 3px;
                 padding: 10px 20px;
                 border-radius: 1px;
+                transition: all 0.3s;
 
                 &:hover {
                   cursor: pointer;
+                  background-color: $accent-hover;
                 }
               }
             }
@@ -394,6 +398,40 @@ $light-gray: #e5e5e5;
       opacity: 0.01;
     transition: opacity 300ms ease-in;
     }
+  }
+}
+
+
+.number-input {
+  display: flex;
+  > .number-input-btn {
+    background-color: $black;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px 15px;
+    transition: all 0.3s;
+    &.plus {
+      &::before {
+        content: "+";
+      }
+
+    }
+    &.minus {
+      &::before {
+        content: "-";
+      }
+      
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $black-hover;
+    }
+  }
+
+  > .number-input-input {
+    width: 50px;
+    text-align: center;
   }
 }
 
