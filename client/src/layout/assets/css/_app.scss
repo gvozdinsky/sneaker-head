@@ -287,6 +287,93 @@ $light-gray: #e5e5e5;
           }
         }
       }
+
+      &.product-detail {
+        > .product-detail-head {
+          > .preview {
+            > .current-image {
+              > img {
+                width: 100%;
+              }
+              
+            }
+          }
+
+          > .info {
+            > .name {
+              text-transform: uppercase;
+              font-size: 28px;
+              color: $light-black;
+              font-weight: 700;
+            }
+
+            > .brand {
+              margin-top: 5px;
+              font-size: 16px;
+              color: $gray;
+            }
+
+            > .price {
+              margin-top: 20px;
+              font-size: 20px;
+              color: $accent;
+              font-weight: 700;
+            }
+
+            > .add-to-bag {
+              margin-top: 45px;
+              > .size-quantity {
+                color: $light-black;
+                > .field {
+                  display: inline-block;
+                  label {
+                    display: block;
+                  }
+                  .size {
+                    width: 150px;
+                    height: 32px;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    border: 1px solid #b9b9b9;
+                  }
+
+                  .quantity {
+                    flex: 0 0 auto;
+                    width: 100px;
+                    height: 32px;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    border: 1px solid #b9b9b9;
+                  }
+
+                  &.size-field {
+                    flex: 1;
+                    margin-right: 15px;
+                  }
+                }
+              }
+              .add-button {
+                margin-top: 15px;
+                display: inline-block;
+                background-color: $accent;
+                outline: 0;
+                border: none;
+                color: white;
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: 200;
+                word-spacing: 3px;
+                padding: 10px 20px;
+                border-radius: 1px;
+
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
   }

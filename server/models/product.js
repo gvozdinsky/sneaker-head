@@ -29,15 +29,23 @@ const ProductSchema = new mongoose.Schema({
     max: 50
   }]
 }, {
-    timestamps: true
+    timestamps: true,
   })
 
 ProductSchema.statics.getAll = async function () {
   return await this.find({});
 }
 
+ProductSchema.statics.getDetail = async function (id) {
+  return await this.findById(id).select('-createdAt -updatedAt -__v');
+}
+
 ProductSchema.set('toJSON', {
-  virtuals: true
+  virtuals: true,
+  transform: function (doc, ret) {
+    delete ret._id;
+  }
+
 });
 
 

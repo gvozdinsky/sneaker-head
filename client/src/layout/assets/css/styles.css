@@ -651,6 +651,87 @@ a {
   z-index: 100;
 }
 
+#shopper .main .page.product-detail > .product-detail-head > .preview > .current-image > img {
+  width: 100%;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .name {
+  text-transform: uppercase;
+  font-size: 28px;
+  color: #303030;
+  font-weight: 700;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .brand {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #606060;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .price {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #f68236;
+  font-weight: 700;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag {
+  margin-top: 45px;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity {
+  color: #303030;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field {
+  display: inline-block;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field label {
+  display: block;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field .size {
+  width: 150px;
+  height: 32px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #b9b9b9;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field .quantity {
+  flex: 0 0 auto;
+  width: 100px;
+  height: 32px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #b9b9b9;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field.size-field {
+  flex: 1;
+  margin-right: 15px;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag .add-button {
+  margin-top: 15px;
+  display: inline-block;
+  background-color: #f68236;
+  outline: 0;
+  border: none;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 200;
+  word-spacing: 3px;
+  padding: 10px 20px;
+  border-radius: 1px;
+}
+
+#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag .add-button:hover {
+  cursor: pointer;
+}
+
 .fade-animation-enter {
   opacity: 0.01;
 }

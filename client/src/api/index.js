@@ -17,7 +17,7 @@ const api = {
       return api_axios.get('/products')
     },
     getOne: (id) => {
-      return api_axios.get(`/product/${id}`);
+      return api_axios.get(`/products/${id}`);
     },
   },
 

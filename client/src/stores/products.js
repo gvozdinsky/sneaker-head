@@ -1,4 +1,4 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, extendObservable } from 'mobx';
 import api from 'api';
 
 export class Product {
@@ -7,6 +7,11 @@ export class Product {
   @observable price;
   @observable brand = {}
   @observable images = []
+
+  @computed
+  get mainImage() {
+    return this.images[0];
+  }
 }
 
 
@@ -28,9 +33,14 @@ export default class Products {
     }
   ]
   @observable sizes = [45, 46, 47, 48, 49, 50]
-  @observable productDetail = {
-    name: ""
-  }
+  @observable productDetails = {
+    id: '',
+    name: '',
+    price: 0,
+    brand: {},
+    images: [],
+    sizes: []
+  };
   @observable filters = {
     brand: observable.map(),
     size: observable.map(),
@@ -56,9 +66,12 @@ export default class Products {
   }
 
   @action.bound
-  async getProduct(id) {
-    const product = await api.products.getOne(id);
-    this.productDetail = product;
+  async getOne(id) {
+    const res = await api.products.getOne(id);
+    console.log('res.data', res.data)
+    this.productDetails = res.data
+    // extendObservable(this.productDetails, res.data)
+
   }
 
   @action.bound
