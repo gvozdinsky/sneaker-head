@@ -69,9 +69,9 @@ class Header extends Component {
               logout={this.props.userModule.logout}
               isAuthenticated={this.props.userModule.isAuthenticated} />
 
-            <div className="controls-item search">
+            {/* <div className="controls-item search">
               <button className="search-button"></button>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>

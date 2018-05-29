@@ -4,13 +4,13 @@
 
 html {
   height: 100%;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 body {
   font-family: 'Lato', sans-serif;
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 a {

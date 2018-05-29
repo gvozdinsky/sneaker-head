@@ -14,9 +14,9 @@ import './layout/assets/css/styles.css';
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Scrollbars autoHeight autoHeightMin="100vh">
-        <App />
-      </Scrollbars>
+
+      <App />
+
     </ConnectedRouter>
   </Provider>,
   document.getElementById("shopper")
