@@ -11,10 +11,10 @@ export default createSagas({
       const res = yield call(api.auth.login, credentials);
       //cart is undef, need fix from backend
       const { user, cart } = res.data;
+      //add cart items to cart store
       yield put({
         type: "SET_USER",
         user: user.user,
-        cart: [] //its temporary
       })
       yield put(push('/'))
     }
@@ -28,10 +28,10 @@ export default createSagas({
       const res = yield call(api.user.getCurrent);
       if (res.data) {
         const { user, cart } = res.data;
+        //add cart items to cart store
         yield put({
           type: "SET_USER",
-          user: user,
-          cart
+          user: user
         })
       }
     }

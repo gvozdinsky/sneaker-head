@@ -6,7 +6,7 @@ import sagas from './sagas'
 import selectors from './selectors'
 
 export const module = {
-  name: 'template',
+  name: 'cart',
   state,
   actions,
   mutations,

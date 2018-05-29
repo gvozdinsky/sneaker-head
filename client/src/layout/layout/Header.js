@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connectStore } from 'redux-box';
 import { module as userModule } from 'store/user';
+import { module as cartModule } from 'store/cart';
 
 
 
@@ -64,7 +65,7 @@ class Header extends Component {
               isAuthenticated={this.props.userModule.isAuthenticated} />
 
             <LoggedInView currentUser={this.props.userModule.user}
-              cart={this.props.userModule.cart}
+              cart={this.props.cartModule.cart}
               logout={this.props.userModule.logout}
               isAuthenticated={this.props.userModule.isAuthenticated} />
 
@@ -79,5 +80,6 @@ class Header extends Component {
 }
 
 export default connectStore({
-  userModule
+  userModule,
+  cartModule
 })(Header);

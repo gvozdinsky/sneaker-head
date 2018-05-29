@@ -1,6 +1,5 @@
 export default {
-  SET_USER: (state, { user, cart }) => {
+  SET_USER: (state, { user }) => {
     state.user = user;
-    state.cart = cart;
   },
 }
