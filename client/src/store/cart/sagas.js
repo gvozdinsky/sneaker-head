@@ -14,5 +14,14 @@ export default createSagas({
       console.log(err)
     }
   },
+  DELETE_CART_ITEM_REQUEST: function* ({ id }) {
+    try {
+      const res = yield call(api.cart.deleteCartItem, id)
+      yield put(cartModule.actions.removeItem(id));
+    }
+    catch (err) {
+      console.log(err)
+    }
+  },
 
 })

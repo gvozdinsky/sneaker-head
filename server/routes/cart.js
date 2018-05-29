@@ -14,4 +14,12 @@ router.post('/', loginRequired, asyncHandler(async (req, res, next) => {
 
 }));
 
+router.delete('/:id', loginRequired, asyncHandler(async (req, res, next) => {
+  const user = req.user;
+  const { id } = req.params;
+  await user.deleteFromCart(id);
+  res.send();
+
+}));
+
 module.exports = router;

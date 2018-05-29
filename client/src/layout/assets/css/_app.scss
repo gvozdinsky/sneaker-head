@@ -370,6 +370,9 @@ $light-gray: #e5e5e5;
           > span {
             color: $accent;
           }
+          > .checkout-btn {
+            margin-left: 10px;
+          }
         }
         > .cart-table {
           width: 100%;
@@ -389,6 +392,9 @@ $light-gray: #e5e5e5;
               &:hover {
                 cursor: pointer;
               }
+            }
+            >.cart-table-item-amount {
+              color: $accent;
             }
           }
           tr {

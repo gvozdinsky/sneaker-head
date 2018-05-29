@@ -42,6 +42,9 @@ const api = {
   cart: {
     addToCart: (cartItem) => {
       return api_axios.post('/cart', cartItem);
+    },
+    deleteCartItem: (id) => {
+      return api_axios.delete(`/cart/${id}`)
     }
   }
 

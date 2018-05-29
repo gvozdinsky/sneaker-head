@@ -7,8 +7,15 @@ import { module as cartModule } from 'store/cart';
 
 
 class Cart extends Component {
+  removeItem(id) {
+    this.props.cartModule.deleteCartItem(id);
+  }
+
+  checkout = () => {
+    alert('This is demo :)')
+  }
+
   renderCartItems = () => {
-    console.log('cart', this.props.cartModule.cart)
     return this.props.cartModule.cart.map(item => {
       const product = item.product;
       return (
@@ -18,13 +25,14 @@ class Cart extends Component {
           <td className="cart-table-item-size">{item.size}</td>
           <td className="cart-table-item-quantity">{item.quantity}</td>
           <td className="cart-table-item-amount">${item.quantity * product.price}</td>
-          <td className="cart-table-item-delete">X</td>
+          <td className="cart-table-item-delete" onClick={this.removeItem.bind(this, item._id)}>X</td>
         </tr>
       )
     });
   }
+
   render() {
-    const checkoutSum = parseFloat(this.props.cartModule.checkoutSum).toFixed(2);;
+    const checkoutSum = parseFloat(this.props.cartModule.checkoutSum).toFixed(2);
     return (
       <div className="page cart">
         <table className="cart-table">
@@ -40,7 +48,7 @@ class Cart extends Component {
             {this.renderCartItems()}
           </tbody>
         </table>
-        <p className="total-sum">Total sum: <span>${checkoutSum}</span></p>
+        <p className="total-sum">Total sum: <span>${checkoutSum}</span><Button className="checkout-btn" onClick={this.checkout}>Checkout</Button> </p>
       </div>
     )
   }

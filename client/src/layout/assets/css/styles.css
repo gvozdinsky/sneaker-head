@@ -730,6 +730,10 @@ a {
   color: #f68236;
 }
 
+#shopper .main .page.cart > .total-sum > .checkout-btn {
+  margin-left: 10px;
+}
+
 #shopper .main .page.cart > .cart-table {
   width: 100%;
   border-collapse: collapse;
@@ -752,6 +756,10 @@ a {
 
 #shopper .main .page.cart > .cart-table .cart-table-item > .cart-table-item-delete:hover {
   cursor: pointer;
+}
+
+#shopper .main .page.cart > .cart-table .cart-table-item > .cart-table-item-amount {
+  color: #f68236;
 }
 
 #shopper .main .page.cart > .cart-table tr {
