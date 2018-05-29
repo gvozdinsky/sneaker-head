@@ -13,7 +13,6 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('um', this.props.userModule)
     this.props.userModule.login(this.state);
   }
 

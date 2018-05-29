@@ -11,8 +11,6 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 import './layout/assets/css/styles.css';
 
-console.log('hist', history);
-
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

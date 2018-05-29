@@ -26,7 +26,7 @@ router.post('/register', asyncHandler(async (req, res) => {
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   const user = req.user.toAuthJSON();
-  res.json({ user });
+  res.json(user);
 });
 
 router.get('/logout', (req, res) => {

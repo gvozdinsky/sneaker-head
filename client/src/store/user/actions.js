@@ -12,5 +12,9 @@ export default {
   }),
   getUser: () => ({
     type: 'USER_REQUEST'
+  }),
+  setUser: (user) => ({
+    type: 'SET_USER',
+    user
   })
 }

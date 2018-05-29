@@ -3,6 +3,7 @@ import NumberInput from 'layout/components/NumberInput';
 import Button from 'layout/components/Button';
 import { connectStore } from 'redux-box';
 import { module as productModule } from 'store/product';
+import { module as cartModule } from 'store/cart';
 
 
 class ProductDetail extends Component {
@@ -25,7 +26,7 @@ class ProductDetail extends Component {
 
   addToCart = () => {
     const { id } = this.props.productModule.productDetails;
-    this.props.user.addToCart({
+    this.props.cartModule.addToCart({
       product: id,
       amount: 1,
       size: 46
@@ -76,5 +77,6 @@ class ProductDetail extends Component {
 }
 
 export default connectStore({
-  productModule
+  productModule,
+  cartModule
 })(ProductDetail);

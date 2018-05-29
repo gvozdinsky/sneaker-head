@@ -2,9 +2,18 @@ export default {
   getProducts: () => ({
     type: 'REQUEST_PRODUCTS',
   }),
+  setProducts: (products) => ({
+    type: 'SET_PRODUCTS',
+    products
+  }),
+
   getProduct: (id) => ({
     type: 'REQUEST_PRODUCT',
     id
+  }),
+  setProductDetails: (product) => ({
+    type: 'SET_PRODUCT_DETAILS',
+    product
   }),
 
   toggleFilter: (filterName, value) => ({
