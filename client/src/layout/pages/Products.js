@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import SizesFilter from '../components/SizesFilter';
 import BrandsFilter from '../components/BrandsFilter';
 import { Link } from "react-router-dom";
-import { inject, observer } from 'mobx-react';
 import { ClipLoader as Spinner } from 'react-spinners';
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import { connectStore } from 'redux-box';
+import { module as productModule } from 'store/product';
 
 
-@inject("products")
-@observer
+
 class Products extends Component {
 
   renderProducts = () => {
-    const { filteredProducts: products } = this.props.products;
-    return products.map(product => {
+    const { productModule } = this.props;
+    return productModule.filteredProducts.map(product => {
       return (
         <div className="product col-lg-4 col-md-6 col-xs-12" key={product.id}>
           <img src={product.images[0]} alt="" className="photo" />
@@ -27,23 +27,23 @@ class Products extends Component {
   }
 
   componentDidMount() {
-    this.props.products.getProducts();
+    this.props.productModule.getProducts();
   }
 
   render() {
-    const { filteredProducts: products, isLoading } = this.props.products;
+    const { productModule } = this.props;
     return (
       <div className="page products row">
         <div className="filters col-md-2 col-xs-12">
-          <BrandsFilter />
-          <SizesFilter />
+          <BrandsFilter brands={productModule.brands} filter={productModule.filters.brand} toggleFilter={productModule.toggleFilter} resetFilter={productModule.resetFilter} />
+          <SizesFilter sizes={productModule.sizes} filter={productModule.filters.size} toggleFilter={productModule.toggleFilter} resetFilter={productModule.resetFilter} />
         </div>
 
         <div className="catalog col-md-10 col-xs-12">
-          <div className="title">{`${products.length} results`}</div>
+          <div className="title">{`${productModule.filteredProducts.length} results`}</div>
 
           <div className="spinner">
-            <Spinner name="line-scale-pulse-out" color="#606060" loading={isLoading} size={80} />
+            <Spinner name="line-scale-pulse-out" color="#606060" loading={productModule.isLoading} size={80} />
           </div>
 
           <ReactCSSTransitionGroup
@@ -53,7 +53,7 @@ class Products extends Component {
             transitionLeaveTimeout={300}
             component="div"
           >
-            {isLoading
+            {productModule.isLoading
               ? null
               : this.renderProducts()}
           </ReactCSSTransitionGroup>
@@ -63,4 +63,6 @@ class Products extends Component {
   }
 }
 
-export default Products;
+export default connectStore({
+  productModule
+})(Products);

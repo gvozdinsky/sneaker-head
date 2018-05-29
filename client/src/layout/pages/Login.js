@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+import { module as userModule } from 'store/user';
+import { connectStore } from 'redux-box';
 
-@inject("user")
-@observer
+
+
 class Login extends Component {
 
   state = {
@@ -12,7 +13,8 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.user.login(this.state);
+    console.log('um', this.props.userModule)
+    this.props.userModule.login(this.state);
   }
 
   handleInputChange = (event) => {
@@ -39,4 +41,6 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connectStore({
+  userModule
+})(Login);

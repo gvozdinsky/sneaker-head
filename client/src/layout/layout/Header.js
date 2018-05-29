@@ -1,16 +1,52 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { inject, observer } from 'mobx-react';
+import { connectStore } from 'redux-box';
+import { module as userModule } from 'store/user';
 
-@inject("user")
-@observer
+
+
+
+const LoggedOutView = props => {
+  if (!props.isAuthenticated) {
+    return (
+      <React.Fragment>
+        <div className="controls-item">
+          <Link to="/login" className="logout">login</Link>
+        </div>
+        <div className="controls-item">
+          <Link to="/register" className="logout">register</Link>
+        </div>
+      </React.Fragment>
+    );
+  }
+  return null;
+};
+
+const LoggedInView = props => {
+
+  if (props.isAuthenticated) {
+    return (
+      <React.Fragment>
+        <div className="controls-item user">
+          {`${props.currentUser.username}`} ( <a className="logout" onClick={props.logout}>logout</a> )
+                      </div>
+        <div className="controls-item basket">
+          Bag ( <span className="count">{props.cart.length}</span> )
+                      </div>
+      </React.Fragment>
+    );
+  }
+
+  return null;
+};
+
+
 class Header extends Component {
   componentDidMount() {
-    this.props.user.getUser();
+    this.props.userModule.getUser();
   }
 
   render() {
-    const userStore = this.props.user;
     return (
       <header className="header">
         <div className="wrapper">
@@ -24,28 +60,13 @@ class Header extends Component {
           </div>
 
           <div className="controls">
-            {
-              userStore.isAuthenticated
-                ?
-                <React.Fragment>
-                  <div className="controls-item user">
-                    {`${userStore.user.username}`} ( <Link to="/logout" className="logout">logout</Link> )
-                      </div>
-                  <div className="controls-item basket">
-                    Bag ( <span className="count">{userStore.cart.length}</span> )
-                      </div>
-                </React.Fragment>
-                :
-                <React.Fragment>
-                  <div className="controls-item">
-                    <Link to="/login" className="logout">login</Link>
-                  </div>
-                  <div className="controls-item">
-                    <Link to="/register" className="logout">register</Link>
-                  </div>
-                </React.Fragment>
-            }
+            <LoggedOutView currentUser={this.props.userModule.user}
+              isAuthenticated={this.props.userModule.isAuthenticated} />
 
+            <LoggedInView currentUser={this.props.userModule.user}
+              cart={this.props.userModule.cart}
+              logout={this.props.userModule.logout}
+              isAuthenticated={this.props.userModule.isAuthenticated} />
 
             <div className="controls-item search">
               <button className="search-button"></button>
@@ -57,4 +78,6 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connectStore({
+  userModule
+})(Header);

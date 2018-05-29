@@ -1,23 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "mobx-react";
-import store from 'stores';
+import { Provider } from "react-redux";
+import store from 'store';
 import App from "layout/layout/App";
 import registerServiceWorker from "./registerServiceWorker";
-import { Router } from 'react-router';
+import { ConnectedRouter } from 'react-router-redux';
 import history from './history';
 import { Scrollbars } from 'react-custom-scrollbars';
 
+
 import './layout/assets/css/styles.css';
 
+console.log('hist', history);
 
 ReactDOM.render(
-  <Provider {...store}>
-    <Router history={history}>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
       <Scrollbars autoHeight autoHeightMin="100vh">
         <App />
       </Scrollbars>
-    </Router>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById("shopper")
 );

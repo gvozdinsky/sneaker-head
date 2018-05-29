@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
 
-@inject("products")
-@observer
+
+
 class BrandsFilter extends Component {
   toggle = (code) => {
-    this.props.products.toggleFilter('brand', code)
+    this.props.toggleFilter('brand', code)
   }
 
   reset = () => {
-    this.props.products.resetFilter('brand');
+    this.props.resetFilter('brand');
   }
 
   renderBrands = () => {
-    const { products } = this.props;
+    const { brands, filter } = this.props;
 
-    return products.brands.map(brand => {
+    return brands.map(brand => {
       return (
-        <div className={`brand ${products.filters.brand.has(brand.code) ? 'active' : ''}`} onClick={this.toggle.bind(this, brand.code)} key={brand.code}>
+        <div className={`brand ${filter[brand.code] ? 'active' : ''}`} onClick={this.toggle.bind(this, brand.code)} key={brand.code}>
           {brand.name}
         </div>
       )

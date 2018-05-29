@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
 
-@inject("products")
-@observer
 class Sizes extends Component {
 
   toggle = (value) => {
-    this.props.products.toggleFilter("size", value)
+    this.props.toggleFilter("size", value)
   }
 
   reset = () => {
-    this.props.products.resetFilter('size');
+    this.props.resetFilter('size');
   }
 
   render() {
-    const { products } = this.props;
+    const { sizes, filter } = this.props;
 
     return (
       <div className="sizes filter">
@@ -25,10 +22,10 @@ class Sizes extends Component {
         <div className="choices">
           <div className="row sizes">
             {
-              products.sizes.map(size => {
+              sizes.map(size => {
                 return (
                   <div className="col-xs-4" onClick={this.toggle.bind(this, size)} key={`size-${size}`}>
-                    <div className={`size ${products.filters.size.has(size) ? 'active' : ''}`}>
+                    <div className={`size ${filter[size] ? 'active' : ''}`}>
                       {size}
                     </div>
                   </div>

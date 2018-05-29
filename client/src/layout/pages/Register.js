@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+import { module as userModule } from 'store/user';
+import { connectStore } from 'redux-box';
 
-@inject("user")
-@observer
+
 class Register extends Component {
 
   state = {
@@ -12,7 +12,7 @@ class Register extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.user.register(this.state);
+    this.props.userModule.register(this.state);
     console.log('eee', this.state)
   }
 
@@ -40,4 +40,6 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default connectStore({
+  userModule
+})(Register);
