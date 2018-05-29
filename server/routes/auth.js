@@ -24,10 +24,11 @@ router.post('/register', asyncHandler(async (req, res) => {
   res.send(200);
 }))
 
-router.post('/login', passport.authenticate('local'), (req, res) => {
-  const user = req.user.toAuthJSON();
+router.post('/login', passport.authenticate('local'), asyncHandler(async (req, res) => {
+  const user = await req.user.toAuthJSON();
+  console.log('user\n\n\n', user)
   res.json(user);
-});
+}));
 
 router.get('/logout', (req, res) => {
   //also need to delete session

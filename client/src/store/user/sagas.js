@@ -10,8 +10,8 @@ export default createSagas({
   LOGIN_REQUEST: function* ({ credentials }) {
     try {
       const res = yield call(api.auth.login, credentials);
-      //cart is undef, need fix from backend
       const { user, cart } = res.data;
+
       yield put(userModule.actions.setUser(user));
       yield put(cartModule.actions.setCart(cart));
       yield put(push('/'))
@@ -24,10 +24,12 @@ export default createSagas({
   USER_REQUEST: function* () {
     try {
       const res = yield call(api.user.getCurrent);
-      if (res.data) {
-        const { user, cart } = res.data;
-        //add cart items to cart store
+      const { user, cart } = res.data;
+
+      if (user) {
         yield put(userModule.actions.setUser(user));
+      }
+      if (cart) {
         yield put(cartModule.actions.setCart(cart));
       }
     }

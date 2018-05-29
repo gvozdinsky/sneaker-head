@@ -8,10 +8,9 @@ const passport = require('passport');
 router.get('/', asyncHandler(async function (req, res, next) {
 
   const products = await Product.getAll();
-  setTimeout((function () { res.send(products) }), 2000);
-  // res.json(
-  //   products
-  // );
+  res.json(
+    products
+  );
 
 }));
 

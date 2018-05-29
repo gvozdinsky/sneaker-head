@@ -24,7 +24,6 @@ const LoggedOutView = props => {
 };
 
 const LoggedInView = props => {
-
   if (props.isAuthenticated) {
     return (
       <React.Fragment>
@@ -33,7 +32,7 @@ const LoggedInView = props => {
                       </div>
         <div className="controls-item basket">
           Bag ( <span className="count">{props.cart.length}</span> )
-                      </div>
+        </div>
       </React.Fragment>
     );
   }

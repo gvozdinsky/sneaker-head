@@ -33,12 +33,15 @@ const UserSchema = new mongoose.Schema({
 UserSchema.plugin(passportLocalMongoose);
 
 //return safe user data, without hast, salt, etc
-UserSchema.methods.toAuthJSON = function () {
+UserSchema.methods.toAuthJSON = async function () {
+  const res = await this.model('User')
+    .findById(this.id)
+    .populate('cart.product', 'name images price')
   return {
     user: {
       username: this.username,
     },
-    cart: this.cart
+    cart: res.cart
   }
 
 }
