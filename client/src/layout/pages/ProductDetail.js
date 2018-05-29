@@ -3,6 +3,7 @@ import NumberInput from 'layout/components/NumberInput';
 import { connectStore } from 'redux-box';
 import { module as productModule } from 'store/product';
 
+
 class ProductDetail extends Component {
   renderSizes = () => {
     const { productDetails } = this.props.productModule;
@@ -35,7 +36,9 @@ class ProductDetail extends Component {
   }
   render() {
     const { productDetails } = this.props.productModule;
-    if (productDetails) {
+    if (!productDetails) {
+      return <p>Loading</p>
+    } else {
       return (
         <div className="product-detail page">
           <div className="product-detail-head row">
@@ -69,12 +72,7 @@ class ProductDetail extends Component {
           </div>
         </div >
       )
-    } else {
-      return <p>Loading boy</p>
     }
-
-
-
   }
 }
 
