@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
   password: String,
   cart: [{
     product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-    amount: {
+    quantity: {
       type: Number,
       min: 1,
       max: 10

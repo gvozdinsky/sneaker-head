@@ -30,8 +30,8 @@ const LoggedInView = props => {
         <div className="controls-item user">
           {`${props.currentUser.username}`} ( <a className="logout" onClick={props.logout}>logout</a> )
                       </div>
-        <div className="controls-item basket">
-          Bag ( <span className="count">{props.cart.length}</span> )
+        <div className="controls-item cart">
+          <Link to="/cart">Bag ( <span className="count">{props.cart.length}</span> )</Link>
         </div>
       </React.Fragment>
     );

@@ -432,10 +432,14 @@ a {
   background: url(../images/icons/user.png) no-repeat 0 center;
 }
 
-#shopper .header > .wrapper > .controls > .controls-item.basket {
+#shopper .header > .wrapper > .controls > .controls-item.cart {
   padding-top: 10px;
   padding-bottom: 10px;
   background: url(../images/icons/basket.png) no-repeat 0 center;
+}
+
+#shopper .header > .wrapper > .controls > .controls-item.cart a {
+  color: #303030;
 }
 
 #shopper .header > .wrapper > .controls > .controls-item.search {
@@ -711,6 +715,56 @@ a {
 #shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field.size-field {
   flex: 1;
   margin-right: 15px;
+}
+
+#shopper .main .page.cart {
+  color: #303030;
+}
+
+#shopper .main .page.cart > .total-sum {
+  font-weight: 700;
+  text-align: right;
+}
+
+#shopper .main .page.cart > .total-sum > span {
+  color: #f68236;
+}
+
+#shopper .main .page.cart > .cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#shopper .main .page.cart > .cart-table .cart-table-item {
+  padding: 10px;
+}
+
+#shopper .main .page.cart > .cart-table .cart-table-item > .cart-table-item-image > img {
+  width: 100px;
+  height: 100px;
+}
+
+#shopper .main .page.cart > .cart-table .cart-table-item > .cart-table-item-delete {
+  font-weight: 700;
+  color: #e83232;
+}
+
+#shopper .main .page.cart > .cart-table .cart-table-item > .cart-table-item-delete:hover {
+  cursor: pointer;
+}
+
+#shopper .main .page.cart > .cart-table tr {
+  border-bottom: 1px solid #e5e5e5;
+  color: #303030;
+}
+
+#shopper .main .page.cart > .cart-table th {
+  text-align: left;
+  color: #909090;
+  font-weight: 200;
+  padding-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .fade-animation-enter {

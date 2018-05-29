@@ -5,6 +5,7 @@ import Brands from "../pages/Brands";
 import Products from "../pages/Products";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import Cart from "../pages/Cart";
 
 
 class Main extends Component {
@@ -16,6 +17,7 @@ class Main extends Component {
           <Switch>
             <Route exact path="/" component={Products} />
             <Route exact path="/product/:id" component={ProductDetail} />
+            <Route exact path="/cart" component={Cart} />
             <Route exact path="/brands" component={Brands} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />

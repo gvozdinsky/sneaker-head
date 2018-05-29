@@ -28,7 +28,7 @@ class ProductDetail extends Component {
     const { id } = this.props.productModule.productDetails;
     this.props.cartModule.addToCart({
       product: id,
-      amount: 1,
+      quantity: 2,
       size: 46
     });
   }
