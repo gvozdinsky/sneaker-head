@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NumberInput from 'layout/components/NumberInput';
+import Button from 'layout/components/Button';
 import { connectStore } from 'redux-box';
 import { module as productModule } from 'store/product';
 
@@ -64,9 +65,7 @@ class ProductDetail extends Component {
                     <NumberInput minValue={1} maxValue={10} />
                   </div>
                 </div>
-                <button className="add-button" onClick={this.addToCart}>
-                  Add to bag
-              </button>
+                <Button className="add-button" onClick={this.addToCart}>Add to bag</Button>
               </div>
             </div>
           </div>

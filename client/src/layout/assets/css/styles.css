@@ -681,6 +681,7 @@ a {
 
 #shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity {
   color: #303030;
+  margin-bottom: 10px;
 }
 
 #shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field {
@@ -693,7 +694,7 @@ a {
 
 #shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field .size {
   width: 150px;
-  height: 32px;
+  height: 33px;
   padding: 5px 10px;
   border-radius: 2px;
   border: 1px solid #b9b9b9;
@@ -711,27 +712,6 @@ a {
 #shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag > .size-quantity > .field.size-field {
   flex: 1;
   margin-right: 15px;
-}
-
-#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag .add-button {
-  margin-top: 15px;
-  display: inline-block;
-  background-color: #f68236;
-  outline: 0;
-  border: none;
-  color: white;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 200;
-  word-spacing: 3px;
-  padding: 10px 20px;
-  border-radius: 1px;
-  transition: all 0.3s;
-}
-
-#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag .add-button:hover {
-  cursor: pointer;
-  background-color: #e47730;
 }
 
 .fade-animation-enter {
@@ -781,5 +761,26 @@ a {
 .number-input > .number-input-input {
   width: 50px;
   text-align: center;
+}
+
+.button {
+  display: inline-block;
+  background-color: #f68236;
+  outline: 0;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 200;
+  word-spacing: 3px;
+  padding: 0.8em 1.2em;
+  border-radius: 1px;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #e47730;
 }
 /*# sourceMappingURL=styles.css.map */

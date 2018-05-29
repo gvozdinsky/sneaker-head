@@ -326,6 +326,7 @@ $light-gray: #e5e5e5;
               margin-top: 45px;
               > .size-quantity {
                 color: $light-black;
+                margin-bottom: 10px;
                 > .field {
                   display: inline-block;
                   label {
@@ -333,7 +334,7 @@ $light-gray: #e5e5e5;
                   }
                   .size {
                     width: 150px;
-                    height: 32px;
+                    height: 33px;
                     padding: 5px 10px;
                     border-radius: 2px;
                     border: 1px solid #b9b9b9;
@@ -352,26 +353,6 @@ $light-gray: #e5e5e5;
                     flex: 1;
                     margin-right: 15px;
                   }
-                }
-              }
-              .add-button {
-                margin-top: 15px;
-                display: inline-block;
-                background-color: $accent;
-                outline: 0;
-                border: none;
-                color: white;
-                text-align: center;
-                text-transform: uppercase;
-                font-weight: 200;
-                word-spacing: 3px;
-                padding: 10px 20px;
-                border-radius: 1px;
-                transition: all 0.3s;
-
-                &:hover {
-                  cursor: pointer;
-                  background-color: $accent-hover;
                 }
               }
             }
@@ -402,6 +383,7 @@ $light-gray: #e5e5e5;
 }
 
 
+// number input
 .number-input {
   display: flex;
   > .number-input-btn {
@@ -432,6 +414,28 @@ $light-gray: #e5e5e5;
   > .number-input-input {
     width: 50px;
     text-align: center;
+  }
+}
+
+// button 
+.button {
+  display: inline-block;
+  background-color: $accent;
+  outline: 0;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 200;
+  word-spacing: 3px;
+  padding: 0.8em 1.2em;
+  border-radius: 1px;
+  transition: all 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $accent-hover;
   }
 }
 
