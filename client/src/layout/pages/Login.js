@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { module as userModule } from 'store/user';
 import { connectStore } from 'redux-box';
+import TextInput from 'layout/components/inputs/TextInput';
+import Button from 'layout/components/Button';
 
 
 
@@ -27,13 +29,15 @@ class Login extends Component {
   }
 
   render() {
+    const isDisabled = !(this.state.username && this.state.password);
     return (
-      <div className="page register">
-        Login
+      <div className="page login">
+
         <form onSubmit={this.handleSubmit} method="post">
-          <input type="text" name="username" onChange={this.handleInputChange} placeholder="Username" />
-          <input type="password" name="password" onChange={this.handleInputChange} placeholder="Password" />
-          <input type="submit" value="Login me" />
+          <h2>Login</h2>
+          <TextInput type="text" name="username" onChange={this.handleInputChange} placeholder="Username" />
+          <TextInput type="password" name="password" onChange={this.handleInputChange} placeholder="Password" />
+          <Button type="submit" disabled={isDisabled}>Login me</Button>
         </form>
       </div>
     );

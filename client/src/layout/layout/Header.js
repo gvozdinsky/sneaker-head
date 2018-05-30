@@ -53,7 +53,7 @@ class Header extends Component {
           <div className="header-left">
             <div className="logo">
               <Link to="/">
-                Sneaker Head
+                SH
               </Link>
 
             </div>

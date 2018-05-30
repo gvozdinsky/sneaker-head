@@ -377,7 +377,7 @@ a {
 }
 
 #shopper .header > .wrapper > .header-left > .logo {
-  margin-right: 60px;
+  margin-right: 30px;
 }
 
 #shopper .header > .wrapper > .header-left > .logo a {
@@ -424,8 +424,8 @@ a {
 }
 
 #shopper .header > .wrapper > .controls > .controls-item {
-  margin-left: 25px;
-  padding: 10px 25px;
+  margin-left: 15px;
+  padding: 10px 0 10px 25px;
 }
 
 #shopper .header > .wrapper > .controls > .controls-item.user {
@@ -775,6 +775,16 @@ a {
   text-transform: uppercase;
 }
 
+#shopper .main .page.register > form, #shopper .main .page.login > form {
+  margin: 50px auto;
+}
+
+@media screen and (min-width: 768px) {
+  #shopper .main .page.register > form, #shopper .main .page.login > form {
+    width: 40%;
+  }
+}
+
 .fade-animation-enter {
   opacity: 0.01;
 }
@@ -793,35 +803,18 @@ a {
   transition: opacity 300ms ease-in;
 }
 
-.number-input {
-  display: flex;
+.field {
+  display: block;
+  margin-bottom: 10px;
 }
 
-.number-input > .number-input-btn {
-  background-color: #222222;
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 5px 15px;
-  transition: all 0.3s;
-}
-
-.number-input > .number-input-btn.plus::before {
-  content: "+";
-}
-
-.number-input > .number-input-btn.minus::before {
-  content: "-";
-}
-
-.number-input > .number-input-btn:hover {
-  cursor: pointer;
-  background-color: #353535;
-}
-
-.number-input > .number-input-input {
-  width: 50px;
-  text-align: center;
+.field > input {
+  padding: 10px;
+  border: 1px solid #303030;
+  font-size: 16px;
+  border-radius: 2px;
+  width: 100%;
+  color: #222222;
 }
 
 .button {
@@ -843,5 +836,11 @@ a {
 .button:hover {
   cursor: pointer;
   background-color: #e47730;
+}
+
+.button:disabled {
+  background-color: #e5e5e5;
+  color: #606060;
+  cursor: not-allowed;
 }
 /*# sourceMappingURL=styles.css.map */

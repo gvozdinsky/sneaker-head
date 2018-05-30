@@ -1,50 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
+import NumericInput from 'react-numeric-input';
 
-class NumberInput extends Component {
-  state = {
-    value: this.props.minValue,
-  }
+export default (props) => {
+  return <NumericInput {...props} style={{
+    wrap: {
+      borderRadius: '1px',
+      fontSize: 14,
+      height: '33px'
+    },
+    input: {
+      // color: '',
+      height: '100%',
+      border: '1px solid #ccc',
+      display: 'block',
+      fontWeight: 100,
+    },
+    'input:focus': {
+      border: '1px inset #69C',
+      outline: 'none'
+    },
 
-  increment = () => {
-    const value = this.state.value + 1;
-    this._setValue(value);
-  }
+    btn: {
+      background: '#222222',
+      color: '#fff',
+      padding: '0 14px'
+    },
+    'btn:hover': {
+      background: '#353535',
+    },
+    'btn:active': {
+      background: '#353535',
+    },
 
-  decrement = () => {
-    const value = this.state.value - 1;
-    this._setValue(value);
-  }
-
-  _setValue(value) {
-    const { minValue, maxValue } = this.props;
-    if (value >= minValue && value <= maxValue) {
-      this.setState((prevState, props) => {
-        return { value }
-      })
+    minus: {
+      background: '#fff',
+    },
+    plus: {
+      backgroundColor: '#fff',
     }
-  }
-
-  handleChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    this._setValue(value);
-  }
-
-  render() {
-    return (
-      <div className="number-input">
-        <div className="number-input-btn minus" onClick={this.decrement}></div>
-        <input type="text" className="number-input-input" onChange={this.handleChange} value={this.state.value} />
-        <div className="number-input-btn plus" onClick={this.increment}></div>
-      </div>
-
-    );
-  }
+  }} />
 }
-
-NumberInput.defaultProps = {
-  minValue: 1,
-  maxValue: 10
-}
-
-export default NumberInput;

@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import NumberInput from 'layout/components/NumberInput';
 import Button from 'layout/components/Button';
+import { Link } from 'react-router-dom';
 import { connectStore } from 'redux-box';
 import { module as productModule } from 'store/product';
 import { module as cartModule } from 'store/cart';
+import { module as userModule } from 'store/user';
 
 
 class ProductDetail extends Component {
+  state = {
+    size: '',
+    quantity: 1
+  }
+
+  handleQuantityChange = (value, strValue, inp) => {
+    this.setState({
+      quantity: value
+    });
+  }
+  handleSizeChange = (e) => {
+    const value = Number(e.target.value);
+    this.setState({
+      size: value
+    })
+  }
+
   renderSizes = () => {
     const { productDetails } = this.props.productModule;
     const options = productDetails.sizes.map(size => {
@@ -18,7 +37,7 @@ class ProductDetail extends Component {
     })
     return (
       [
-        <option key="first" selected disabled value="">{options.length ? "Select size ..." : "No sizes"}</option>,
+        <option key="first" disabled value="">{options.length ? "Select size ..." : "No sizes"}</option>,
         ...options
       ]
     )
@@ -28,8 +47,8 @@ class ProductDetail extends Component {
     const { id } = this.props.productModule.productDetails;
     this.props.cartModule.addToCart({
       product: id,
-      quantity: 2,
-      size: 46
+      quantity: this.state.quantity,
+      size: this.state.size
     });
   }
 
@@ -38,6 +57,7 @@ class ProductDetail extends Component {
   }
   render() {
     const { productDetails } = this.props.productModule;
+    const isDisabled = !this.state.size;
     if (!productDetails) {
       return <p>Loading</p>
     } else {
@@ -57,16 +77,21 @@ class ProductDetail extends Component {
                 <div className="size-quantity">
                   <div className="field size-field">
                     <label htmlFor="size">Size:</label>
-                    <select name="size" className="size" placeholder="Choose size">
+                    <select name="size" className="size" value={this.state.size} placeholder="Choose size" onChange={this.handleSizeChange}>
                       {this.renderSizes()}
                     </select>
                   </div>
                   <div className="field">
-                    <label htmlFor="quantity">Amount:</label>
-                    <NumberInput minValue={1} maxValue={10} />
+                    <label htmlFor="quantity">Quantity:</label>
+                    <NumberInput mobile name="quantity" min={1} max={10} value={this.state.quantity} onChange={this.handleQuantityChange} />
                   </div>
                 </div>
-                <Button className="add-button" onClick={this.addToCart}>Add to bag</Button>
+                {this.props.userModule.isAuthenticated
+                  ?
+                  <Button className="add-button" onClick={this.addToCart} disabled={isDisabled}>Add to bag</Button>
+                  :
+                  <p>Please <Link to="/login">register</Link> or <Link to="/login">login</Link> to start shopping.</p>}
+
               </div>
             </div>
           </div>
@@ -78,5 +103,6 @@ class ProductDetail extends Component {
 
 export default connectStore({
   productModule,
-  cartModule
+  cartModule,
+  userModule
 })(ProductDetail);
