@@ -28,6 +28,7 @@ const connectionString = process.env.DATABASE_URL || 'mongodb://localhost/shoppe
 //   // If not connected, return errors immediately rather than waiting for reconnect
 //   bufferMaxEntries: 0
 // };
+console.log('connectString', connectionString);
 mongoose.connect(connectionString);
 mongoose.set('debug', true);
 
