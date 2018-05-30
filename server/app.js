@@ -31,7 +31,7 @@ const dbOptions = {
 mongoose.connect(connectionString, dbOptions);
 mongoose.set('debug', false);
 
-// seeder();
+seeder();
 
 //session
 app.use(session({
