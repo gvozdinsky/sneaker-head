@@ -21,15 +21,15 @@ const app = express();
 
 //set mongodb connection
 const connectionString = process.env.DATABASE_URL || 'mongodb://localhost/shopper';
-const dbOptions = {
-  reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
-  reconnectInterval: 500, // Reconnect every 500ms
-  poolSize: 10, // Maintain up to 10 socket connections
-  // If not connected, return errors immediately rather than waiting for reconnect
-  bufferMaxEntries: 0
-};
-mongoose.connect(connectionString, dbOptions);
-mongoose.set('debug', false);
+// const dbOptions = {
+//   reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+//   reconnectInterval: 500, // Reconnect every 500ms
+//   poolSize: 10, // Maintain up to 10 socket connections
+//   // If not connected, return errors immediately rather than waiting for reconnect
+//   bufferMaxEntries: 0
+// };
+mongoose.connect(connectionString);
+mongoose.set('debug', true);
 
 seeder();
 
