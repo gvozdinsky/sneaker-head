@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const loginRequired = require('./utils').loginRequired;
+const fs = require("fs");
+const path = require("path");
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/protected', loginRequired, function (req, res, next) {
-  console.log('req', req.user)
-  res.send("protected route");
+router.get("*", (req, res) => {
+  console.log("ea tut");
+  ctx.body = fs.readFileSync(
+    path.resolve(path.join("public", "index.html")),
+    "utf8"
+  );
 });
 
 module.exports = router;

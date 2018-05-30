@@ -11,17 +11,25 @@ const LocalStrategy = require("passport-local");
 const MongoStore = require('connect-mongo')(session);
 const seeder = require('./seeds');
 
-const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
+const indexRouter = require('./routes/index');
 
 const app = express();
 
 //set mongodb connection
-mongoose.connect('mongodb://localhost/shopper');
-mongoose.set('debug', true);
+const connectionString = process.env.DATABASE_URL || 'mongodb://localhost/shopper';
+const dbOptions = {
+  reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+  reconnectInterval: 500, // Reconnect every 500ms
+  poolSize: 10, // Maintain up to 10 socket connections
+  // If not connected, return errors immediately rather than waiting for reconnect
+  bufferMaxEntries: 0
+};
+mongoose.connect(connectionString, dbOptions);
+mongoose.set('debug', false);
 
 // seeder();
 
@@ -55,11 +63,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routers
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/products', productsRouter);
 app.use('/cart', cartRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
