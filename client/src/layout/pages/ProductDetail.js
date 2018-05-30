@@ -90,7 +90,7 @@ class ProductDetail extends Component {
                   ?
                   <Button className="add-button" onClick={this.addToCart} disabled={isDisabled}>Add to bag</Button>
                   :
-                  <p>Please <Link to="/login">register</Link> or <Link to="/login">login</Link> to start shopping.</p>}
+                  <p>Please <Link to="/register">register</Link> or <Link to="/login">login</Link> to start shopping.</p>}
 
               </div>
             </div>

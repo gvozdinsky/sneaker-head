@@ -20,6 +20,7 @@ const indexRouter = require('./routes/index');
 const app = express();
 
 //set mongodb connection
+//bad practice need to put this string in process.env
 const connectionString = 'mongodb://dima2395:dimastii1@ds141720.mlab.com:41720/sneaker-head';
 const dbOptions = {
   socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 }
