@@ -717,10 +717,6 @@ a {
   margin-right: 15px;
 }
 
-#shopper .main .page.product-detail > .product-detail-head > .info > .add-to-bag .add-button {
-  width: 200px;
-}
-
 #shopper .main .page.cart {
   color: #303030;
 }
@@ -822,12 +818,13 @@ a {
 }
 
 .pb-container .pb-button svg.pb-checkmark path, .pb-container .pb-button svg.pb-cross path {
-  stroke: #fff;
+  stroke: #ffffff;
   stroke-linecap: round;
   stroke-width: 4;
 }
 
 .pb-container {
+  width: 200px;
   display: inline-block;
   text-align: center;
   font-size: 1rem;
@@ -838,7 +835,7 @@ a {
   padding: 5px 10px;
   border: none;
   border-radius: 2px;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
   text-decoration: none;
   text-align: center;

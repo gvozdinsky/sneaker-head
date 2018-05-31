@@ -66,12 +66,12 @@ class ProductDetail extends Component {
       return (
         <div className="product-detail page">
           <div className="product-detail-head row">
-            <div className="preview col-md-6">
+            <div className="preview col-md-6  col-sm-6 col-xs-12">
               <div className="current-image">
                 <img src={productDetails.images[0]} alt="" />
               </div>
             </div>
-            <div className="info col-md-6">
+            <div className="info col-md-6 col-sm-6 col-xs-12">
               <div className="name">{productDetails.name}</div>
               <div className="brand">{productDetails.brand.name}</div>
               <div className="price">${productDetails.price}</div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { module as userModule } from 'store/user';
+import { module as uiModule } from 'store/ui';
 import { connectStore } from 'redux-box';
 import TextInput from 'layout/components/inputs/TextInput';
 import Button from 'layout/components/Button';
@@ -21,7 +22,6 @@ class Register extends Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    console.log('data', data)
     this.setState({
       [name]: value
     });
@@ -35,7 +35,7 @@ class Register extends Component {
           <h2>Registration</h2>
           <TextInput type="text" name="username" onChange={this.handleInputChange} placeholder="Username" />
           <TextInput type="password" name="password" onChange={this.handleInputChange} placeholder="Password" />
-          <Button type="submit" disabled={isDisabled}>Register</Button>
+          <Button type="submit" disabled={isDisabled} state={`${isDisabled ? 'disabled' : this.props.uiModule.buttonsState['REGISTER'] || ''}`}>Register</Button>
         </form>
       </div>
     );
@@ -43,5 +43,6 @@ class Register extends Component {
 }
 
 export default connectStore({
-  userModule
+  userModule,
+  uiModule
 })(Register);

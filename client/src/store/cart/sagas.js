@@ -1,5 +1,6 @@
 import { createSagas } from 'redux-box'
 import { call, put } from 'redux-saga/effects'
+import { delay } from 'redux-saga'
 import api from 'api';
 import { module as cartModule } from 'store/cart';
 import { module as uiModule } from 'store/ui';
@@ -17,6 +18,8 @@ export default createSagas({
       console.log(err)
       yield put(uiModule.actions.setButtonState('ADD_TO_CART', 'error'))
     }
+    yield delay(300);
+    yield put(uiModule.actions.setButtonState('ADD_TO_CART', ''))
   },
   DELETE_CART_ITEM_REQUEST: function* ({ id }) {
     try {

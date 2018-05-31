@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { module as userModule } from 'store/user';
+import { module as uiModule } from 'store/ui';
 import { connectStore } from 'redux-box';
 import TextInput from 'layout/components/inputs/TextInput';
 import Button from 'layout/components/Button';
@@ -37,7 +38,7 @@ class Login extends Component {
           <h2>Login</h2>
           <TextInput type="text" name="username" onChange={this.handleInputChange} placeholder="Username" />
           <TextInput type="password" name="password" onChange={this.handleInputChange} placeholder="Password" />
-          <Button type="submit" disabled={isDisabled}>Login me</Button>
+          <Button type="submit" disabled={isDisabled} state={`${isDisabled ? 'disabled' : this.props.uiModule.buttonsState['LOGIN'] || ''}`}>Login me</Button>
         </form>
       </div>
     );
@@ -45,5 +46,6 @@ class Login extends Component {
 }
 
 export default connectStore({
-  userModule
+  userModule,
+  uiModule
 })(Login);
