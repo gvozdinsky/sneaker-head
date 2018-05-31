@@ -62,6 +62,7 @@ export default createSagas({
       yield put(uiModule.actions.setButtonState('REGISTER', 'loading'))
       yield call(api.auth.register, credentials);
       yield put(uiModule.actions.setButtonState('REGISTER', 'success'))
+      yield put(userModule.actions.getUser());
       yield put(push('/'));
     }
     catch (err) {

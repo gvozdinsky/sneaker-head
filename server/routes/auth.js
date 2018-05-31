@@ -13,16 +13,16 @@ router.post('/register', asyncHandler(async (req, res) => {
     const new_user = await User.register({
       username
     }, password);
-    
+    passport.authenticate("local")(req, res, function () {
+      // redirect user or do whatever you want
+      console.log('login after reg\n\n\n', req.user);
+      res.send(200);
+    });
+
   } catch (e) {
-    if (e.name === 'UserExistsError') {
-      //throw validation error
-    }
-    console.log('blea', { e })
+    console.log('err', e);
+    res.status(403).json(e.message);
   }
-
-
-  res.send(200);
 }))
 
 router.post('/login', passport.authenticate('local'), asyncHandler(async (req, res) => {
@@ -41,7 +41,7 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.send(403, '401 Unauthorized');
+  res.send(401, '401 Unauthorized');
 }
 
 module.exports = router;
