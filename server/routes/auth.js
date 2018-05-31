@@ -13,6 +13,7 @@ router.post('/register', asyncHandler(async (req, res) => {
     const new_user = await User.register({
       username
     }, password);
+    
   } catch (e) {
     if (e.name === 'UserExistsError') {
       //throw validation error

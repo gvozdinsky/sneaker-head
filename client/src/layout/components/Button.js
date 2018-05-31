@@ -1,10 +1,11 @@
 import React from 'react';
+import ProgressButton, { STATE } from 'react-progress-button';
 
 function Button({ primary, children, className, ...restProps }) {
   return (
-    <button className={`button ${className} ${primary ? 'primary' : ''}`} {...restProps}>
+    <ProgressButton controlled={true} className={`${className} ${primary ? 'primary' : ''}`} {...restProps}>
       {children}
-    </button>
+    </ProgressButton>
   )
 
 }

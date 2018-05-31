@@ -6,6 +6,7 @@ import { connectStore } from 'redux-box';
 import { module as productModule } from 'store/product';
 import { module as cartModule } from 'store/cart';
 import { module as userModule } from 'store/user';
+import { module as uiModule } from 'store/ui';
 
 
 class ProductDetail extends Component {
@@ -55,6 +56,7 @@ class ProductDetail extends Component {
   componentDidMount() {
     this.props.productModule.getProduct(this.props.match.params.id);
   }
+
   render() {
     const { productDetails } = this.props.productModule;
     const isDisabled = !this.state.size;
@@ -88,7 +90,12 @@ class ProductDetail extends Component {
                 </div>
                 {this.props.userModule.isAuthenticated
                   ?
-                  <Button className="add-button" onClick={this.addToCart} disabled={isDisabled}>Add to bag</Button>
+                  <Button className="add-button"
+                    onClick={this.addToCart}
+                    disabled={isDisabled}
+                    state={`${isDisabled ? 'disabled' : this.props.uiModule.buttonsState['ADD_TO_CART'] || ''}`}>
+                    Add to bag
+                  </Button>
                   :
                   <p>Please <Link to="/register">register</Link> or <Link to="/login">login</Link> to start shopping.</p>}
 
@@ -104,5 +111,6 @@ class ProductDetail extends Component {
 export default connectStore({
   productModule,
   cartModule,
-  userModule
+  userModule,
+  uiModule
 })(ProductDetail);
